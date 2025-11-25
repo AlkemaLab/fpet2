@@ -1,0 +1,26 @@
+#' @keywords internal
+"_PACKAGE"
+
+## usethis namespace: start
+#' @import dplyr
+#' @import ggplot2
+#' @importFrom bayesplot mcmc_dens_overlay
+#' @importFrom bayesplot mcmc_intervals
+#' @importFrom cmdstanr cmdstan_model
+#' @importFrom cmdstanr read_cmdstan_csv
+#' @importFrom posterior as_draws_list
+#' @importFrom purrr list_flatten
+#' @importFrom purrr map
+#' @importFrom purrr map_int
+#' @importFrom purrr map2_int map_dbl
+#' @importFrom rlang sym
+#' @importFrom stats dnorm quantile rnorm
+#' @importFrom stringr fixed
+#' @importFrom tibble tibble
+#' @importFrom tidyr pivot_longer
+#' @importFrom tidyr pivot_wider
+#' @importFrom utils data
+#' @importFrom glue glue
+#' @importFrom readr parse_number
+## usethis namespace: end
+NULL
