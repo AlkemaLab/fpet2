@@ -26,11 +26,8 @@ Imports:
     glue,
     rlang,
     readr,
-    localhierarchy,
     truncnorm,
     posterior
-Remotes:
-    github::AlkemaLab/localhierarchy
 Depends: 
     R (>= 3.5)
 LazyData: true
@@ -41,10 +38,13 @@ URL: https://github.com/AlkemaLab/fpet2, https://alkemalab.github.io/fpet2025/, 
 BugReports: https://github.com/AlkemaLab/fpet2/issues
 Suggests: 
     cmdstanr,
+    localhierarchy,
     quarto,
     here,
     bayesplot,
     knitr,
     rmarkdown
+Remotes:
+    github::AlkemaLab/localhierarchy
 Config/Needs/website: quarto, rmarkdown
 VignetteBuilder: knitr
