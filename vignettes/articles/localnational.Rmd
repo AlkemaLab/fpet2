@@ -1,0 +1,76 @@
+---
+title: 'FPET: Local fitting for national estimation for all women'
+author: "Leontine Alkema"
+date: "`r Sys.Date()`"
+---
+
+# Introduction
+In this vignette we obtain national estimates of FP indicators for all women. We use local fits. 
+
+
+```{r}
+#| label: setup
+library(fpet2)
+options(cmdstanr_warn_inits = FALSE)
+```
+
+
+# Read data for all countries
+
+We use the Track20 survey data base and the UNPD population estimates:
+```{r}
+data_folder <- here::here("data-raw")
+survey_data_file <- file.path(data_folder, "Track20 2025 Database for FPET2 051325.csv")
+nat_population_data_file <- file.path(data_folder, "population_counts.rds")
+# read inputs
+survey_df_all <- readr::read_csv(survey_data_file, show_col_types = FALSE)
+population_df_all <- readRDS(nat_population_data_file)
+```
+
+# Model fitting
+
+First choose a country (division_numeric_code and country names are available in `fpet2::regions_all`): 
+```{r}
+division_numeric_code_select <- 768 # Togo
+```
+
+Note that in the current package, the model needs to be compiled once, this takes a little while. (Note: In the 2024 version, we packaged up the model using `instantiate`, we can consider that again here too). 
+
+There will be text indicating what model assumptions are made for married women, followed by assumptions for unmarried women.
+
+```{r, warning = FALSE}
+results_national <- fit_fpem(
+  survey_df = survey_df_all |>
+    dplyr::filter(division_numeric_code == division_numeric_code_select),
+  population_df = population_df_all |>
+    dplyr::filter(division_numeric_code == division_numeric_code_select),
+  service_statistic_df = NULL,
+  subnational = FALSE,
+  regions_dat = fpet2::regions_all
+)
+```
+
+Let's plot!
+```{r}
+plots_all <- plot_estimates_local_all(
+  results = results_national,
+  subnational  = FALSE,
+  dat_emu = results_national$dat_emu,
+  save_plots = FALSE)
+print(plots_all)
+```
+
+The model fit object also contains the estimates, which can be used for custom plotting or tables. Some examples:
+
+```{r}
+results_national$estimates |>
+  dplyr::filter(marital_status == "all")
+```
+
+
+```{r}
+results_national$estimates |>
+  dplyr::filter(measure == "population_count")
+```
+
+

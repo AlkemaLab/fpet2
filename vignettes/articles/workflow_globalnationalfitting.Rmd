@@ -1,0 +1,183 @@
+---
+title: "Workflow for FPET global fitting for national-level estimation"
+author: "Leontine Alkema"
+date: "`r Sys.Date()`"
+knitr:
+  opts_chunk:
+    collapse: true
+    comment: '#>'
+---
+
+# Introduction
+In this vignette we illustrate how to do global fitting for national estimation of family planning indicators using the FPET2 R package. 
+
+
+```{r}
+#| label: setup
+library(fpet2)
+options(cmdstanr_warn_inits = FALSE)
+```
+
+
+# Global survey data base
+
+For global fitting, we use a global data base of survey data. We also
+use meta information on countries and world regions.
+
+Read data 
+```{r}
+data_folder <- here::here("data-raw")
+survey_data_file <- file.path(data_folder, "Track20 2025 Database for FPET2 051325.csv")
+survey_df_all <- readr::read_csv(survey_data_file, show_col_types = FALSE)
+```
+
+Global national model fitting is done separately per marital group. We
+illustrate it here for married women.
+
+We process the data for that marital group:
+```{r}
+is_married <- TRUE
+dat <- process_data(survey_df_all,
+                    regions_dat = fpet2::regions_all,
+                    is_married = is_married)
+```
+
+
+
+# Model settings: MCMC settings and output directory
+
+For model fitting, we define MCMC settings. We can choose a test setting
+or a longer run. We use a test setting here for illustration only. NOTE THAT THIS WILL PRODUCE WARNINGS AND RESULTS THAT ARE NOT TO BE USED!!
+
+```{r}
+# test settings
+chains = 4
+iter_sampling = 5
+iter_warmup = 5
+
+# longer run
+# chains = 16
+# iter_sampling = 50
+# iter_warmup = 150
+```
+
+When fitting the model, outputs are saved in an output directory. There
+are different options to define this directory. By default, the directory is automatically created one directory up from
+this package's directory, in a directory called
+`bayestransition_output`. Alternatively (and easier for this article), the user can specify an output directory to use:
+```{r}
+# Create an output directory in a temporary location
+output_dir <- file.path(tempdir(), "vignette_output")
+dir.create(output_dir, showWarnings = FALSE)
+
+# Print the path so the user knows where to find it
+cat("Outputs are saved in:", output_dir, "\n")
+```
+
+# Model fitting
+
+The `fit_model` function is used for global model fitting. Its help
+function explains its use. Its argument `run_step` is used to define the
+type of model fitting. For global national fitting, we do the following
+fits:
+
+-   `runstep = "step1a"`: Get longterm trends by fitting a model witout AR(1) deviation terms;
+
+-   `runstep = "step1b"`: Estimate parameters governing country-specific variations in transition functions, short-term fluctuations and data quality;
+
+-   `runstep = "step2"`: Estimate parameters associated with  traditional use.
+
+Let's start with 1a:
+
+```{r, warning = FALSE}
+fit1a <- fit_model(runstep = "step1a",
+                   survey_df = dat,
+                   is_married = is_married,
+                   get_posteriors = FALSE,
+                   output_dir = output_dir, 
+                   chains = chains,
+                   iter_sampling =  iter_sampling,
+                   iter_warmup = iter_warmup)
+```
+
+Outputs are stored in
+
+```{r}
+fit1a$output_dir
+```
+
+The next fit 1b needs summary information from 1a passed on through its
+`global_fit` object. Here we pass the one we just fitted. For fit1b, we also update the outlier classifications in the survey data used, to allow for data points that are outlying in fit 1a to be possibly outlying, as follows:
+
+```{r}
+dat_updated <- update_nooutlier_in_global_fit(fit1a, is_married)
+```
+
+Now let's fit step 1b:
+```{r, warning=FALSE}
+fit1b <- fit_model(runstep = "step1b",
+                   global_fit = fit1a,
+                   survey_df = dat_updated,
+                   is_married = is_married,
+                    output_dir = output_dir, 
+                   get_posteriors = FALSE,
+                   chains = chains,
+                   iter_sampling =  iter_sampling,
+                   iter_warmup = iter_warmup
+)
+```
+
+In step 2, the parameters for traditional use are estimated:
+```{r}
+fit2 <- fit_model(runstep = "step2",
+                   global_fit = fit1b,
+                   survey_df = dat_updated,
+                   is_married = is_married,
+                   get_posteriors = FALSE,
+                  output_dir = output_dir, 
+                  chains = chains,
+                  iter_sampling =  iter_sampling,
+                  iter_warmup = iter_warmup)
+```
+
+
+We can plot all estimates using the `plot_estimates_local` function. Relevant code is added below. We are not showing results hereto avoid confusion, given that test settings were used, so the results are incorrect. 
+
+Let's create the results first:
+```{r, warning = FALSE}
+results2 <- list()
+results2$estimates <- get_estimates_globalruns(
+  samples = fit2$samples, 
+  geo_unit_index = fit2$geo_unit_index,
+  time_index = fit2$time_index,
+  marital_status = ifelse(is_married, "married", "unmarried"),
+  return_samples = FALSE)
+```
+
+Add uncertainty in observations (so that we can display the 95% CIs associated with each data point): 
+```{r, warning = FALSE}
+results2$observations <- add_uncertainty_in_obs(fit  = fit2)
+```
+
+Now let's plot! (again, not showing the results...)
+```{r, eval = FALSE}
+plots <-
+  plot_estimates_local_all(
+      results = results2,
+      marital_status_all =  ifelse(is_married, "married", "unmarried"),
+      indicator_select_all =  c("contraceptive_use_modern",
+                 "unmet_need_modern",
+                 "demand", #"demand_satisfied_modern",
+                 "contraceptive_use_traditional"),
+      save_plots = FALSE)
+# plots are in a list, eg check 
+plots[[1]][[1]]
+```
+
+
+# Local fitting
+
+For local fitting, the `fit_model` function can be used as well, using
+`runstep = "local_national"`. This results in local fitting for one
+marital group. For local fitting for all women, the function `fit_fpem`
+can be used (see other article).
