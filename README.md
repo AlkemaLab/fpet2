@@ -1,9 +1,9 @@
-localhierarchy
+FPET2
 ================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# FPET2
+# 
 
 R package for fitting Bayesian transition models to produce estimates
 and projections of family planning indicators. This work was supported,
@@ -79,6 +79,12 @@ References that describe earlier approaches:
 
 The model is written in R and Stan. For any questions, feedback or
 suggestions, please contact Leontine at lalkema(at)umass.edu.
+
+# Example
+
+See articles on package website, at
+<a href="https://alkemalab.github.io/fpet2/index.html"
+class="uri">https://alkemalab.github.io/fpet2</a>.
 
 # Citation
 

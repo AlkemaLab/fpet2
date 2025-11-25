@@ -1,5 +1,5 @@
 ---
-title: "localhierarchy"
+title: "FPET2"
 output: github_document
 ---
 
@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# FPET2
+# 
 
 R package for fitting Bayesian transition models to produce estimates
 and projections of family planning indicators. This work was supported,
@@ -90,6 +90,11 @@ References that describe earlier approaches:
 
 The model is written in R and Stan. For any questions, feedback or
 suggestions, please contact Leontine at lalkema(at)umass.edu.
+
+# Example
+
+See articles on package website, at
+[https://alkemalab.github.io/fpet2](https://alkemalab.github.io/fpet2/index.html){.uri}.
 
 # Citation
 
