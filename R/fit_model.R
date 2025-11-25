@@ -71,7 +71,6 @@
 #' @return fpemplus object.
 #'
 #'
-#' @importFrom cmdstanr cmdstan_model write_stan_file
 #' @importFrom tibble tibble
 #' @importFrom splines bs
 #' @import dplyr
