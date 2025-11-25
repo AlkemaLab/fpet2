@@ -41,7 +41,9 @@ Suggests:
     here,
     bayesplot,
     knitr,
-    rmarkdown
+    rmarkdown,
+    ggnewscale,
+    ggpubr
 Remotes:
     github::AlkemaLab/localhierarchy
 Config/Needs/website: quarto, rmarkdown
