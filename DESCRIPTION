@@ -30,6 +30,7 @@ Imports:
     cmdstanr
 Remotes:
     github::stan-dev/cmdstanr
+    github::AlkemaLab/localhierarchy
 Depends: 
     R (>= 3.5)
 LazyData: true
