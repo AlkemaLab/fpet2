@@ -39,5 +39,6 @@ URL: https://github.com/AlkemaLab/fpet2, https://alkemalab.github.io/fpet2025/, 
 BugReports: https://github.com/AlkemaLab/fpet2/issues
 Suggests: 
     cmdstanr,
-    quarto
+    quarto,
+    here
 Config/Needs/website: quarto, rmarkdown
