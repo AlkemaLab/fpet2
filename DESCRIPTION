@@ -26,7 +26,9 @@ Imports:
     glue,
     rlang,
     readr,
-    localhierarchy
+    localhierarchy,
+    truncnorm,
+    posterior
 Remotes:
     github::AlkemaLab/localhierarchy
 Depends: 
@@ -40,5 +42,9 @@ BugReports: https://github.com/AlkemaLab/fpet2/issues
 Suggests: 
     cmdstanr,
     quarto,
-    here
+    here,
+    bayesplot,
+    knitr,
+    rmarkdown
 Config/Needs/website: quarto, rmarkdown
+VignetteBuilder: knitr

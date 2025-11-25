@@ -15,6 +15,7 @@
 #' @importFrom purrr map2_int map_dbl
 #' @importFrom rlang sym
 #' @importFrom stats dnorm quantile rnorm
+#' @importFrom truncnorm rtruncnorm
 #' @importFrom stringr fixed
 #' @importFrom tibble tibble
 #' @importFrom tidyr pivot_longer
