@@ -29,7 +29,6 @@ Imports:
     localhierarchy,
     cmdstanr
 Remotes:
-    github::stan-dev/cmdstanr
     github::AlkemaLab/localhierarchy
 Depends: 
     R (>= 3.5)
