@@ -212,18 +212,22 @@ plot_estimates_local_all <- function( iso_select = NULL,
   if (save_plots) {
     if (!is.null(output_folder)) {
       output_dir <- output_folder
-    #} else if (dir.exists(results$output_dir)) {
-    #  output_dir <- results$output_dir
     } else {
+      if (dir.exists(results$output_dir)) {
+        output_dir <- results$output_dir
+     } else {
       stop("Please provide a valid output_folder to save the plot in.")
+     }
     }
     pdf(file.path(output_dir, paste0(plot_name,".pdf")), width = 11, height = 6)
     for (plot in all_plots) {
       print(plot)
     }
     dev.off()
+    return(NULL)
+  } else {
+    return(all_plots)
   }
-  return(all_plots)
 }
 
 

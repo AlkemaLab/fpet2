@@ -1194,18 +1194,22 @@ fit_model <- function(
   #  saveRDS(result, file.path(output_dir, paste0(indicator, "_fit_nopost.rds")))
   #}
   if (get_posteriors){
-    #result$data <- add_uncertainty_in_obs(result)
-    # errors for 1a/1b becasue there are no dm3 obs
+    # for consistency with fpet all women, add data with uncertainty as observations
+    result$observations <- add_uncertainty_in_obs(result)
     cat("Extracting posteriors...\n")
     # result$posteriors <- process_fit(result, parallel_chains = ifelse(is.null(chains), 1, chains),
     #                                  save_eps = FALSE,
     #                                  save_nontemporal  = FALSE)
     # not sure we still want this class
     # attr(result, "class") <- "fpemplus"
-    result$estimates <- get_estimates_globalruns(result$samples, result$geo_unit_index,
-                                                 result$time_index,
-                                                 marital_status = ifelse(result$is_married, "married", "unmarried"),
-                                                 return_samples = TRUE)
+    result$estimates <-
+      get_estimates_globalruns(
+        result$samples,
+        result$geo_unit_index,
+        result$time_index,
+        marital_status = ifelse(result$is_married, "married", "unmarried"),
+        return_samples = FALSE,
+        add_trad = ifelse(runstep %in% c("step1a", "step1b"), FALSE, TRUE))
   }
   # if (runstep %in% c("step1a", "step1b", "global_subnational", "step2")){
   #   stepname <- dplyr::case_when(
