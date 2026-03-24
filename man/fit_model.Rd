@@ -87,6 +87,7 @@ fit_model(
   chains = 4,
   iter_sampling = 200,
   iter_warmup = 150,
+  n_thin = 1,
   add_sample = TRUE,
   compile_model = TRUE,
   force_recompile = FALSE,
@@ -162,6 +163,8 @@ Settings for sampling}
 \item{iter_sampling}{number of posterior samples to draw}
 
 \item{iter_warmup}{number of warmup iterations}
+
+\item{n_thin}{thinning, defaults to 1}
 
 \item{add_sample}{boolean indicator of whether to return samples}
 

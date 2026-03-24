@@ -58,6 +58,7 @@
 #' @param chains number of chains to run
 #' @param iter_sampling number of posterior samples to draw
 #' @param iter_warmup number of warmup iterations
+#' @param n_thin thinning, defaults to 1
 #' @param add_sample boolean indicator of whether to return samples
 #' @param compile_model boolean indicator of whether to compile the Stan model
 #' @param force_recompile boolean indicator of whether to force recompilation of the Stan model
@@ -289,6 +290,7 @@ fit_model <- function(
   chains = 4, # probably need more for final model
   iter_sampling = 200,
   iter_warmup = 150,
+  n_thin = 1,
   add_sample = TRUE, # if FALSE, returns fit w/o samples
   # minor to do: check settings when finalizing stan model block/decision re instantiate
   compile_model  = TRUE, force_recompile = FALSE,
@@ -1153,6 +1155,7 @@ fit_model <- function(
       parallel_chains  = chains,
       iter_sampling = iter_sampling,
       iter_warmup = iter_warmup,
+      thin = n_thin,
       seed = seed,
       refresh = refresh,
       adapt_delta = adapt_delta,
