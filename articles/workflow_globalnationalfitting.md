@@ -76,7 +76,7 @@ dir.create(output_dir, showWarnings = FALSE)
 cat("Outputs are saved in:", output_dir, "\n")
 ```
 
-    ## Outputs are saved in: /tmp/Rtmpxx07l9/vignette_output
+    ## Outputs are saved in: /tmp/Rtmpq5qrUJ/vignette_output
 
 ## Model fitting
 
@@ -113,7 +113,7 @@ fit1a <- fit_model(runstep = "step1a",
     ## [1] "For 1a, we take all levels from the fit_model inputs"
     ## [1] "We do not fix any terms or sigmas of hierarchical models."
     ## [1] "We do give nonSE to DHS (by temporarily renaming DHS into DHS0)"
-    ## [1] "output directory is /tmp/Rtmpxx07l9/vignette_output"
+    ## [1] "output directory is /tmp/Rtmpq5qrUJ/vignette_output"
     ## Running MCMC with 4 parallel chains...
     ## 
     ## Chain 1 WARNING: No variance estimation is 
@@ -124,26 +124,26 @@ fit1a <- fit_model(runstep = "step1a",
     ## Chain 3          performed for num_warmup < 20 
     ## Chain 4 WARNING: No variance estimation is 
     ## Chain 4          performed for num_warmup < 20 
+    ## Chain 1 Iteration: 1 / 10 [ 10%]  (Warmup) 
     ## Chain 2 Iteration: 1 / 10 [ 10%]  (Warmup) 
     ## Chain 3 Iteration: 1 / 10 [ 10%]  (Warmup) 
-    ## Chain 1 Iteration: 1 / 10 [ 10%]  (Warmup) 
     ## Chain 4 Iteration: 1 / 10 [ 10%]  (Warmup) 
     ## Chain 2 Iteration: 6 / 10 [ 60%]  (Sampling) 
-    ## Chain 2 Iteration: 10 / 10 [100%]  (Sampling) 
     ## Chain 1 Iteration: 6 / 10 [ 60%]  (Sampling) 
-    ## Chain 2 finished in 0.6 seconds.
+    ## Chain 2 Iteration: 10 / 10 [100%]  (Sampling) 
+    ## Chain 2 finished in 0.5 seconds.
     ## Chain 1 Iteration: 10 / 10 [100%]  (Sampling) 
-    ## Chain 1 finished in 0.9 seconds.
+    ## Chain 1 finished in 0.8 seconds.
     ## Chain 3 Iteration: 6 / 10 [ 60%]  (Sampling) 
     ## Chain 3 Iteration: 10 / 10 [100%]  (Sampling) 
-    ## Chain 3 finished in 3.8 seconds.
+    ## Chain 3 finished in 3.4 seconds.
     ## Chain 4 Iteration: 6 / 10 [ 60%]  (Sampling) 
     ## Chain 4 Iteration: 10 / 10 [100%]  (Sampling) 
-    ## Chain 4 finished in 15.9 seconds.
+    ## Chain 4 finished in 14.0 seconds.
     ## 
     ## All 4 chains finished successfully.
-    ## Mean chain execution time: 5.3 seconds.
-    ## Total execution time: 16.6 seconds.
+    ## Mean chain execution time: 4.7 seconds.
+    ## Total execution time: 14.6 seconds.
 
     ## Warning: 20 of 20 (100.0%) transitions ended with a divergence.
     ## See https://mc-stan.org/misc/warnings for details.
@@ -154,7 +154,7 @@ Outputs are stored in
 fit1a$output_dir
 ```
 
-    ## [1] "/tmp/Rtmpxx07l9/vignette_output"
+    ## [1] "/tmp/Rtmpq5qrUJ/vignette_output"
 
 The next fit 1b needs summary information from 1a passed on through its
 `global_fit` object. Here we pass the one we just fitted. For fit1b, we
@@ -196,7 +196,7 @@ fit1b <- fit_model(runstep = "step1b",
     ## [1] "We take all hier terms from the global fit, using prefix"
     ## [1] "For hierarchical terms, we fix things up to the 2nd-lowest level."
     ## [1] "For sigma terms in hierarchical models for demand and ds, we fix things up to the 2nd-lowest level."
-    ## [1] "output directory is /tmp/Rtmpxx07l9/vignette_output"
+    ## [1] "output directory is /tmp/Rtmpq5qrUJ/vignette_output"
     ## Running MCMC with 4 parallel chains...
     ## 
     ## Chain 1 WARNING: No variance estimation is 
@@ -213,20 +213,20 @@ fit1b <- fit_model(runstep = "step1b",
     ## Chain 4 Iteration: 1 / 10 [ 10%]  (Warmup) 
     ## Chain 2 Iteration: 6 / 10 [ 60%]  (Sampling) 
     ## Chain 2 Iteration: 10 / 10 [100%]  (Sampling) 
-    ## Chain 2 finished in 2.3 seconds.
+    ## Chain 2 finished in 2.0 seconds.
     ## Chain 3 Iteration: 6 / 10 [ 60%]  (Sampling) 
     ## Chain 3 Iteration: 10 / 10 [100%]  (Sampling) 
-    ## Chain 3 finished in 4.0 seconds.
-    ## Chain 4 Iteration: 6 / 10 [ 60%]  (Sampling) 
-    ## Chain 4 Iteration: 10 / 10 [100%]  (Sampling) 
-    ## Chain 4 finished in 4.5 seconds.
+    ## Chain 3 finished in 2.9 seconds.
     ## Chain 1 Iteration: 6 / 10 [ 60%]  (Sampling) 
+    ## Chain 4 Iteration: 6 / 10 [ 60%]  (Sampling) 
     ## Chain 1 Iteration: 10 / 10 [100%]  (Sampling) 
-    ## Chain 1 finished in 5.2 seconds.
+    ## Chain 4 Iteration: 10 / 10 [100%]  (Sampling) 
+    ## Chain 1 finished in 4.3 seconds.
+    ## Chain 4 finished in 4.1 seconds.
     ## 
     ## All 4 chains finished successfully.
-    ## Mean chain execution time: 4.0 seconds.
-    ## Total execution time: 5.7 seconds.
+    ## Mean chain execution time: 3.3 seconds.
+    ## Total execution time: 4.8 seconds.
 
     ## Warning: 20 of 20 (100.0%) transitions ended with a divergence.
     ## See https://mc-stan.org/misc/warnings for details.
@@ -256,7 +256,7 @@ fit2 <- fit_model(runstep = "step2",
     ## [1] "We fix all sigmas of hierarchical models for demand and ds."
     ## [1] "For 2, we take all levels for trad from the fit_model inputs"
     ## [1] "We do not fix any terms or sigmas of hierarchical models."
-    ## [1] "output directory is /tmp/Rtmpxx07l9/vignette_output"
+    ## [1] "output directory is /tmp/Rtmpq5qrUJ/vignette_output"
     ## Running MCMC with 4 parallel chains...
     ## 
     ## Chain 1 WARNING: No variance estimation is 
@@ -273,20 +273,20 @@ fit2 <- fit_model(runstep = "step2",
     ## Chain 4 Iteration: 1 / 10 [ 10%]  (Warmup) 
     ## Chain 1 Iteration: 6 / 10 [ 60%]  (Sampling) 
     ## Chain 1 Iteration: 10 / 10 [100%]  (Sampling) 
-    ## Chain 1 finished in 1.5 seconds.
     ## Chain 4 Iteration: 6 / 10 [ 60%]  (Sampling) 
+    ## Chain 1 finished in 1.4 seconds.
     ## Chain 4 Iteration: 10 / 10 [100%]  (Sampling) 
-    ## Chain 4 finished in 2.7 seconds.
+    ## Chain 4 finished in 2.2 seconds.
     ## Chain 2 Iteration: 6 / 10 [ 60%]  (Sampling) 
     ## Chain 2 Iteration: 10 / 10 [100%]  (Sampling) 
-    ## Chain 2 finished in 5.9 seconds.
+    ## Chain 2 finished in 4.8 seconds.
     ## Chain 3 Iteration: 6 / 10 [ 60%]  (Sampling) 
     ## Chain 3 Iteration: 10 / 10 [100%]  (Sampling) 
-    ## Chain 3 finished in 7.0 seconds.
+    ## Chain 3 finished in 6.4 seconds.
     ## 
     ## All 4 chains finished successfully.
-    ## Mean chain execution time: 4.3 seconds.
-    ## Total execution time: 7.9 seconds.
+    ## Mean chain execution time: 3.7 seconds.
+    ## Total execution time: 7.2 seconds.
 
     ## Warning: 20 of 20 (100.0%) transitions ended with a divergence.
     ## See https://mc-stan.org/misc/warnings for details.

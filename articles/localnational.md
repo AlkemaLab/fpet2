@@ -126,18 +126,18 @@ results_national <- fit_fpem(
     ## Chain 1 Iteration: 300 / 350 [ 85%]  (Sampling) 
     ## Chain 4 Iteration: 250 / 350 [ 71%]  (Sampling) 
     ## Chain 2 Iteration: 350 / 350 [100%]  (Sampling) 
-    ## Chain 2 finished in 7.9 seconds.
+    ## Chain 2 finished in 7.8 seconds.
     ## Chain 3 Iteration: 350 / 350 [100%]  (Sampling) 
-    ## Chain 3 finished in 8.0 seconds.
+    ## Chain 3 finished in 7.8 seconds.
     ## Chain 1 Iteration: 350 / 350 [100%]  (Sampling) 
-    ## Chain 1 finished in 8.2 seconds.
+    ## Chain 1 finished in 8.0 seconds.
     ## Chain 4 Iteration: 300 / 350 [ 85%]  (Sampling) 
     ## Chain 4 Iteration: 350 / 350 [100%]  (Sampling) 
-    ## Chain 4 finished in 8.8 seconds.
+    ## Chain 4 finished in 8.7 seconds.
     ## 
     ## All 4 chains finished successfully.
-    ## Mean chain execution time: 8.2 seconds.
-    ## Total execution time: 9.0 seconds.
+    ## Mean chain execution time: 8.1 seconds.
+    ## Total execution time: 8.9 seconds.
     ## 
     ## [1] "Chains finished, now calculating estimates (can take a little while)"
 

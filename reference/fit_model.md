@@ -88,6 +88,7 @@ fit_model(
   chains = 4,
   iter_sampling = 200,
   iter_warmup = 150,
+  n_thin = 1,
   add_sample = TRUE,
   compile_model = TRUE,
   force_recompile = FALSE,
@@ -221,6 +222,10 @@ fit_model(
 - iter_warmup:
 
   number of warmup iterations
+
+- n_thin:
+
+  thinning, defaults to 1
 
 - add_sample:
 
