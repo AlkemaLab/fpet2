@@ -268,10 +268,6 @@ fit_model(
 
   boolean indicator of whether to add initial values to the Stan model
 
-- start_year:
-
-  start year of estimates.
-
 - t_star:
 
   reference year used in model.

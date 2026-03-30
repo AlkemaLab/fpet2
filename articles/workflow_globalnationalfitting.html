@@ -130,7 +130,7 @@ output directory to use:</p>
 <span></span>
 <span><span class="co"># Print the path so the user knows where to find it</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Outputs are saved in:"</span>, <span class="va">output_dir</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Outputs are saved in: /tmp/RtmpDHsMAW/vignette_output</span></span></code></pre>
+<pre><code><span><span class="co">## Outputs are saved in: /tmp/Rtmp0jzw8K/vignette_output</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="model-fitting">Model fitting<a class="anchor" aria-label="anchor" href="#model-fitting"></a>
@@ -163,7 +163,7 @@ with traditional use.</p></li>
 <span><span class="co">## [1] "For 1a, we take all levels from the fit_model inputs"</span></span>
 <span><span class="co">## [1] "We do not fix any terms or sigmas of hierarchical models."</span></span>
 <span><span class="co">## [1] "We do give nonSE to DHS (by temporarily renaming DHS into DHS0)"</span></span>
-<span><span class="co">## [1] "output directory is /tmp/RtmpDHsMAW/vignette_output"</span></span>
+<span><span class="co">## [1] "output directory is /tmp/Rtmp0jzw8K/vignette_output"</span></span>
 <span><span class="co">## Running MCMC with 4 parallel chains...</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Chain 1 WARNING: No variance estimation is </span></span>
@@ -183,23 +183,23 @@ with traditional use.</p></li>
 <span><span class="co">## Chain 2 Iteration: 10 / 10 [100%]  (Sampling) </span></span>
 <span><span class="co">## Chain 2 finished in 0.5 seconds.</span></span>
 <span><span class="co">## Chain 1 Iteration: 10 / 10 [100%]  (Sampling) </span></span>
-<span><span class="co">## Chain 1 finished in 0.7 seconds.</span></span>
+<span><span class="co">## Chain 1 finished in 0.8 seconds.</span></span>
 <span><span class="co">## Chain 3 Iteration: 6 / 10 [ 60%]  (Sampling) </span></span>
 <span><span class="co">## Chain 3 Iteration: 10 / 10 [100%]  (Sampling) </span></span>
-<span><span class="co">## Chain 3 finished in 3.3 seconds.</span></span>
+<span><span class="co">## Chain 3 finished in 3.4 seconds.</span></span>
 <span><span class="co">## Chain 4 Iteration: 6 / 10 [ 60%]  (Sampling) </span></span>
 <span><span class="co">## Chain 4 Iteration: 10 / 10 [100%]  (Sampling) </span></span>
 <span><span class="co">## Chain 4 finished in 14.4 seconds.</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## All 4 chains finished successfully.</span></span>
-<span><span class="co">## Mean chain execution time: 4.7 seconds.</span></span>
-<span><span class="co">## Total execution time: 15.0 seconds.</span></span></code></pre>
+<span><span class="co">## Mean chain execution time: 4.8 seconds.</span></span>
+<span><span class="co">## Total execution time: 14.9 seconds.</span></span></code></pre>
 <pre><code><span><span class="co">## Warning: 20 of 20 (100.0%) transitions ended with a divergence.</span></span>
 <span><span class="co">## See https://mc-stan.org/misc/warnings for details.</span></span></code></pre>
 <p>Outputs are stored in</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit1a</span><span class="op">$</span><span class="va">output_dir</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] "/tmp/RtmpDHsMAW/vignette_output"</span></span></code></pre>
+<pre><code><span><span class="co">## [1] "/tmp/Rtmp0jzw8K/vignette_output"</span></span></code></pre>
 <p>The next fit 1b needs summary information from 1a passed on through
 its <code>global_fit</code> object. Here we pass the one we just fitted.
 For fit1b, we also update the outlier classifications in the survey data
@@ -232,7 +232,7 @@ possibly outlying, as follows:</p>
 <span><span class="co">## [1] "We take all hier terms from the global fit, using prefix"</span></span>
 <span><span class="co">## [1] "For hierarchical terms, we fix things up to the 2nd-lowest level."</span></span>
 <span><span class="co">## [1] "For sigma terms in hierarchical models for demand and ds, we fix things up to the 2nd-lowest level."</span></span>
-<span><span class="co">## [1] "output directory is /tmp/RtmpDHsMAW/vignette_output"</span></span>
+<span><span class="co">## [1] "output directory is /tmp/Rtmp0jzw8K/vignette_output"</span></span>
 <span><span class="co">## Running MCMC with 4 parallel chains...</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Chain 1 WARNING: No variance estimation is </span></span>
@@ -252,16 +252,16 @@ possibly outlying, as follows:</p>
 <span><span class="co">## Chain 2 finished in 2.0 seconds.</span></span>
 <span><span class="co">## Chain 3 Iteration: 6 / 10 [ 60%]  (Sampling) </span></span>
 <span><span class="co">## Chain 3 Iteration: 10 / 10 [100%]  (Sampling) </span></span>
-<span><span class="co">## Chain 3 finished in 3.3 seconds.</span></span>
-<span><span class="co">## Chain 4 Iteration: 6 / 10 [ 60%]  (Sampling) </span></span>
+<span><span class="co">## Chain 3 finished in 2.8 seconds.</span></span>
 <span><span class="co">## Chain 1 Iteration: 6 / 10 [ 60%]  (Sampling) </span></span>
-<span><span class="co">## Chain 4 Iteration: 10 / 10 [100%]  (Sampling) </span></span>
-<span><span class="co">## Chain 4 finished in 3.9 seconds.</span></span>
+<span><span class="co">## Chain 4 Iteration: 6 / 10 [ 60%]  (Sampling) </span></span>
 <span><span class="co">## Chain 1 Iteration: 10 / 10 [100%]  (Sampling) </span></span>
-<span><span class="co">## Chain 1 finished in 4.4 seconds.</span></span>
+<span><span class="co">## Chain 4 Iteration: 10 / 10 [100%]  (Sampling) </span></span>
+<span><span class="co">## Chain 1 finished in 4.2 seconds.</span></span>
+<span><span class="co">## Chain 4 finished in 4.2 seconds.</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## All 4 chains finished successfully.</span></span>
-<span><span class="co">## Mean chain execution time: 3.4 seconds.</span></span>
+<span><span class="co">## Mean chain execution time: 3.3 seconds.</span></span>
 <span><span class="co">## Total execution time: 4.8 seconds.</span></span></code></pre>
 <pre><code><span><span class="co">## Warning: 20 of 20 (100.0%) transitions ended with a divergence.</span></span>
 <span><span class="co">## See https://mc-stan.org/misc/warnings for details.</span></span></code></pre>
@@ -287,15 +287,15 @@ possibly outlying, as follows:</p>
 <span><span class="co">## [1] "We fix all sigmas of hierarchical models for demand and ds."</span></span>
 <span><span class="co">## [1] "For 2, we take all levels for trad from the fit_model inputs"</span></span>
 <span><span class="co">## [1] "We do not fix any terms or sigmas of hierarchical models."</span></span>
-<span><span class="co">## [1] "output directory is /tmp/RtmpDHsMAW/vignette_output"</span></span>
+<span><span class="co">## [1] "output directory is /tmp/Rtmp0jzw8K/vignette_output"</span></span>
 <span><span class="co">## Running MCMC with 4 parallel chains...</span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">## Chain 1 WARNING: No variance estimation is </span></span>
-<span><span class="co">## Chain 1          performed for num_warmup &lt; 20 </span></span>
 <span><span class="co">## Chain 2 WARNING: No variance estimation is </span></span>
 <span><span class="co">## Chain 2          performed for num_warmup &lt; 20 </span></span>
 <span><span class="co">## Chain 3 WARNING: No variance estimation is </span></span>
 <span><span class="co">## Chain 3          performed for num_warmup &lt; 20 </span></span>
+<span><span class="co">## Chain 1 WARNING: No variance estimation is </span></span>
+<span><span class="co">## Chain 1          performed for num_warmup &lt; 20 </span></span>
 <span><span class="co">## Chain 4 WARNING: No variance estimation is </span></span>
 <span><span class="co">## Chain 4          performed for num_warmup &lt; 20 </span></span>
 <span><span class="co">## Chain 1 Iteration: 1 / 10 [ 10%]  (Warmup) </span></span>
@@ -304,19 +304,19 @@ possibly outlying, as follows:</p>
 <span><span class="co">## Chain 4 Iteration: 1 / 10 [ 10%]  (Warmup) </span></span>
 <span><span class="co">## Chain 1 Iteration: 6 / 10 [ 60%]  (Sampling) </span></span>
 <span><span class="co">## Chain 1 Iteration: 10 / 10 [100%]  (Sampling) </span></span>
-<span><span class="co">## Chain 4 Iteration: 6 / 10 [ 60%]  (Sampling) </span></span>
 <span><span class="co">## Chain 1 finished in 1.4 seconds.</span></span>
+<span><span class="co">## Chain 4 Iteration: 6 / 10 [ 60%]  (Sampling) </span></span>
 <span><span class="co">## Chain 4 Iteration: 10 / 10 [100%]  (Sampling) </span></span>
-<span><span class="co">## Chain 4 finished in 1.9 seconds.</span></span>
+<span><span class="co">## Chain 4 finished in 2.3 seconds.</span></span>
 <span><span class="co">## Chain 2 Iteration: 6 / 10 [ 60%]  (Sampling) </span></span>
 <span><span class="co">## Chain 2 Iteration: 10 / 10 [100%]  (Sampling) </span></span>
-<span><span class="co">## Chain 2 finished in 4.8 seconds.</span></span>
+<span><span class="co">## Chain 2 finished in 5.1 seconds.</span></span>
 <span><span class="co">## Chain 3 Iteration: 6 / 10 [ 60%]  (Sampling) </span></span>
 <span><span class="co">## Chain 3 Iteration: 10 / 10 [100%]  (Sampling) </span></span>
 <span><span class="co">## Chain 3 finished in 6.2 seconds.</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## All 4 chains finished successfully.</span></span>
-<span><span class="co">## Mean chain execution time: 3.5 seconds.</span></span>
+<span><span class="co">## Mean chain execution time: 3.7 seconds.</span></span>
 <span><span class="co">## Total execution time: 6.9 seconds.</span></span></code></pre>
 <pre><code><span><span class="co">## Warning: 20 of 20 (100.0%) transitions ended with a divergence.</span></span>
 <span><span class="co">## See https://mc-stan.org/misc/warnings for details.</span></span></code></pre>
