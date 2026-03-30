@@ -33,7 +33,7 @@ fit_fpem  <- function(
     end_year = 2030
 ) {
 
-  print("This is the FPET2025 version 1.2 (released November 24, 2025)!")
+  print("This is the FPET2026 draft version 0.9, released March 30, 2026. Internal data will be updated for final 2026 version.")
   if (subnational) {
     # we need to get geo_units in same order
     survey_df <- survey_df %>%

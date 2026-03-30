@@ -11,7 +11,7 @@
 #'   \item{time_index}{data frame with geo_unit info}
 #'   \item{other settings}{spline settings, t_star, etc}
 #' }
-#' @source global fit 2025
+#' @source global fit 2026
 #' @keywords internal
 "fit1a_married"
 
@@ -28,7 +28,7 @@
 #'   \item{time_index}{data frame with geo_unit info}
 #'   \item{other settings}{spline settings, t_star, etc}
 #' }
-#' @source global fit 2025
+#' @source global fit 2026
 #' @keywords internal
 "fit1b_married"
 
@@ -44,26 +44,12 @@
 #'   \item{time_index}{data frame with geo_unit info}
 #'   \item{other settings}{spline settings, t_star, etc}
 #' }
-#' @source global fit 2025
+#' @source global fit 2026
 #' @keywords internal
 "fit2_married"
 
 
-#' Global fit object fit3_married
-#'
-#'
-#' @format ## `fit3_married`
-#' list with global fit objects including
-#' \describe{
-#'   \item{post_summ}{data frame with posterior summaries for relevant parameters}
-#'   \item{geo_unit_index}{data frame with geo_unit info}
-#'   \item{source_index}{data frame with sources of survey data with indices used in the model}
-#'   \item{time_index}{data frame with geo_unit info}
-#'   \item{other settings}{spline settings, t_star, etc}
-#' }
-#' @source global fit 2025
-#' @keywords internal
-"fit3_married"
+
 
 #' Global fit object fit3_fromnat_married
 #'
@@ -77,7 +63,7 @@
 #'   \item{time_index}{data frame with geo_unit info}
 #'   \item{other settings}{spline settings, t_star, etc}
 #' }
-#' @source global fit 2025
+#' @source global fit 2026
 #' @keywords internal
 "fit3_fromnat_married"
 
@@ -97,7 +83,7 @@
 #'   \item{time_index}{data frame with geo_unit info}
 #'   \item{other settings}{spline settings, t_star, etc}
 #' }
-#' @source global fit 2025
+#' @source global fit 2026
 #' @keywords internal
 "fit1a_unmarried"
 
@@ -114,7 +100,7 @@
 #'   \item{time_index}{data frame with geo_unit info}
 #'   \item{other settings}{spline settings, t_star, etc}
 #' }
-#' @source global fit 2025
+#' @source global fit 2026
 #' @keywords internal
 "fit1b_unmarried"
 
@@ -130,26 +116,10 @@
 #'   \item{time_index}{data frame with geo_unit info}
 #'   \item{other settings}{spline settings, t_star, etc}
 #' }
-#' @source global fit 2025
+#' @source global fit 2026
 #' @keywords internal
 "fit2_unmarried"
 
-
-#' Global fit object fit3_unmarried
-#'
-#'
-#' @format ## `fit3_unmarried`
-#' list with global fit objects including
-#' \describe{
-#'   \item{post_summ}{data frame with posterior summaries for relevant parameters}
-#'   \item{geo_unit_index}{data frame with geo_unit info}
-#'   \item{source_index}{data frame with sources of survey data with indices used in the model}
-#'   \item{time_index}{data frame with geo_unit info}
-#'   \item{other settings}{spline settings, t_star, etc}
-#' }
-#' @source global fit 2025
-#' @keywords internal
-"fit3_unmarried"
 
 #' Global fit object fit3_fromnat_unmarried
 #'
@@ -163,6 +133,6 @@
 #'   \item{time_index}{data frame with geo_unit info}
 #'   \item{other settings}{spline settings, t_star, etc}
 #' }
-#' @source global fit 2025
+#' @source global fit 2026
 #' @keywords internal
 "fit3_fromnat_unmarried"

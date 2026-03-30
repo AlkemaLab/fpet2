@@ -16,7 +16,7 @@ list with global fit objects including
 }
 }
 \source{
-global fit 2025
+global fit 2026
 }
 \usage{
 fit1a_married
