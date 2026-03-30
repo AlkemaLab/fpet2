@@ -106,6 +106,7 @@ fit_model_allwomen <- function(
       summarise(prop_married = sum(popcount[is_in_union == "Y"]) /
                   sum(popcount[is_in_union == "Y"] + popcount[is_in_union == "N"])) %>%
       ungroup() %>%
+      dplyr::filter(year <= end_year) %>%
       arrange(year) %>%
       left_join(data_allwomen[[1]]$geo_unit_index %>%
                   dplyr::select(region_code, c)) %>%

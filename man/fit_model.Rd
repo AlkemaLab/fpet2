@@ -186,8 +186,6 @@ Settings for sampling}
 
 \item{add_inits}{boolean indicator of whether to add initial values to the Stan model}
 
-\item{start_year}{start year of estimates.}
-
 \item{t_star}{reference year used in model.}
 
 \item{hierarchical_asymptote}{vector specifying hierarchical structure for

@@ -19,7 +19,6 @@
 #'   values to use for some parameters in the current fit (see Details).
 #' @param iso_select ISO code to use for local runs
 #'
-#' @param start_year start year of estimates.
 #' @param end_year end year of estimates.
 #'
 #' @param t_star reference year used in model.
