@@ -52,7 +52,7 @@ results_national <- fit_fpem(
 )
 ```
 
-    ## [1] "This is the FPET2026 draft version 0.9, released March 30, 2026. Internal data will be updated for final 2026 version."
+    ## [1] "This is the FPET2026 version 1.0, released April 2, 2026."
     ## [1] "When imputing SEs for DHS, we use the effective sample size of its preceding survey"
 
     ## Joining with `by = join_by(record_id_fixed)`
@@ -98,46 +98,46 @@ results_national <- fit_fpem(
     ## Chain 2 Iteration:   1 / 350 [  0%]  (Warmup) 
     ## Chain 3 Iteration:   1 / 350 [  0%]  (Warmup) 
     ## Chain 4 Iteration:   1 / 350 [  0%]  (Warmup) 
+    ## Chain 3 Iteration:  50 / 350 [ 14%]  (Warmup) 
     ## Chain 2 Iteration:  50 / 350 [ 14%]  (Warmup) 
     ## Chain 1 Iteration:  50 / 350 [ 14%]  (Warmup) 
-    ## Chain 3 Iteration:  50 / 350 [ 14%]  (Warmup) 
     ## Chain 4 Iteration:  50 / 350 [ 14%]  (Warmup) 
+    ## Chain 3 Iteration: 100 / 350 [ 28%]  (Warmup) 
     ## Chain 2 Iteration: 100 / 350 [ 28%]  (Warmup) 
     ## Chain 1 Iteration: 100 / 350 [ 28%]  (Warmup) 
-    ## Chain 3 Iteration: 100 / 350 [ 28%]  (Warmup) 
-    ## Chain 4 Iteration: 100 / 350 [ 28%]  (Warmup) 
-    ## Chain 1 Iteration: 150 / 350 [ 42%]  (Warmup) 
-    ## Chain 1 Iteration: 151 / 350 [ 43%]  (Sampling) 
-    ## Chain 2 Iteration: 150 / 350 [ 42%]  (Warmup) 
-    ## Chain 2 Iteration: 151 / 350 [ 43%]  (Sampling) 
     ## Chain 3 Iteration: 150 / 350 [ 42%]  (Warmup) 
     ## Chain 3 Iteration: 151 / 350 [ 43%]  (Sampling) 
-    ## Chain 1 Iteration: 200 / 350 [ 57%]  (Sampling) 
-    ## Chain 2 Iteration: 200 / 350 [ 57%]  (Sampling) 
+    ## Chain 4 Iteration: 100 / 350 [ 28%]  (Warmup) 
+    ## Chain 2 Iteration: 150 / 350 [ 42%]  (Warmup) 
+    ## Chain 2 Iteration: 151 / 350 [ 43%]  (Sampling) 
     ## Chain 3 Iteration: 200 / 350 [ 57%]  (Sampling) 
+    ## Chain 1 Iteration: 150 / 350 [ 42%]  (Warmup) 
+    ## Chain 1 Iteration: 151 / 350 [ 43%]  (Sampling) 
+    ## Chain 2 Iteration: 200 / 350 [ 57%]  (Sampling) 
     ## Chain 4 Iteration: 150 / 350 [ 42%]  (Warmup) 
-    ## Chain 4 Iteration: 151 / 350 [ 43%]  (Sampling) 
-    ## Chain 1 Iteration: 250 / 350 [ 71%]  (Sampling) 
-    ## Chain 2 Iteration: 250 / 350 [ 71%]  (Sampling) 
     ## Chain 3 Iteration: 250 / 350 [ 71%]  (Sampling) 
+    ## Chain 4 Iteration: 151 / 350 [ 43%]  (Sampling) 
+    ## Chain 1 Iteration: 200 / 350 [ 57%]  (Sampling) 
+    ## Chain 2 Iteration: 250 / 350 [ 71%]  (Sampling) 
     ## Chain 4 Iteration: 200 / 350 [ 57%]  (Sampling) 
-    ## Chain 1 Iteration: 300 / 350 [ 85%]  (Sampling) 
-    ## Chain 2 Iteration: 300 / 350 [ 85%]  (Sampling) 
     ## Chain 3 Iteration: 300 / 350 [ 85%]  (Sampling) 
-    ## Chain 1 Iteration: 350 / 350 [100%]  (Sampling) 
-    ## Chain 1 finished in 8.1 seconds.
-    ## Chain 2 Iteration: 350 / 350 [100%]  (Sampling) 
-    ## Chain 3 Iteration: 350 / 350 [100%]  (Sampling) 
+    ## Chain 1 Iteration: 250 / 350 [ 71%]  (Sampling) 
+    ## Chain 2 Iteration: 300 / 350 [ 85%]  (Sampling) 
     ## Chain 4 Iteration: 250 / 350 [ 71%]  (Sampling) 
-    ## Chain 2 finished in 8.3 seconds.
-    ## Chain 3 finished in 8.3 seconds.
+    ## Chain 3 Iteration: 350 / 350 [100%]  (Sampling) 
+    ## Chain 3 finished in 8.0 seconds.
+    ## Chain 1 Iteration: 300 / 350 [ 85%]  (Sampling) 
     ## Chain 4 Iteration: 300 / 350 [ 85%]  (Sampling) 
+    ## Chain 2 Iteration: 350 / 350 [100%]  (Sampling) 
+    ## Chain 2 finished in 8.7 seconds.
+    ## Chain 1 Iteration: 350 / 350 [100%]  (Sampling) 
+    ## Chain 1 finished in 9.0 seconds.
     ## Chain 4 Iteration: 350 / 350 [100%]  (Sampling) 
-    ## Chain 4 finished in 9.6 seconds.
+    ## Chain 4 finished in 9.1 seconds.
     ## 
     ## All 4 chains finished successfully.
-    ## Mean chain execution time: 8.6 seconds.
-    ## Total execution time: 9.8 seconds.
+    ## Mean chain execution time: 8.7 seconds.
+    ## Total execution time: 9.2 seconds.
     ## 
     ## [1] "Chains finished, now calculating estimates (can take a little while)"
 
