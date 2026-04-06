@@ -11,11 +11,11 @@ fit_fpem(
   subnational = FALSE,
   national_dat_df = NULL,
   chains = 4,
-  iter_sampling = 200,
+  iter_sampling = 350,
   iter_warmup = 150,
   seed = 1234,
   regions_dat,
-  end_year = 2030
+  end_year = 2035
 )
 }
 \arguments{
@@ -41,7 +41,7 @@ filtered to pop of interest. Model is fitted to surveys in national_dat_df that 
 
 \item{regions_dat}{Data frame with region information}
 
-\item{end_year}{End year for the model, default is 2030}
+\item{end_year}{End year for the model, default is 2035}
 }
 \value{
 results list with estimates, samples, data_allwomen, observations,

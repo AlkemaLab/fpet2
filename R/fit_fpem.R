@@ -13,7 +13,7 @@
 #' @param iter_warmup Number of iterations for warmup
 #' @param seed Random seed for Stan
 #' @param regions_dat Data frame with region information
-#' @param end_year End year for the model, default is 2030
+#' @param end_year End year for the model, default is 2035
 #'
 #' @returns results list with estimates, samples, data_allwomen, observations,
 #'  and dat_emu = dat_emu
@@ -26,14 +26,14 @@ fit_fpem  <- function(
     subnational = FALSE,
     national_dat_df = NULL,
     chains = 4,
-    iter_sampling = 200,
+    iter_sampling = 350,
     iter_warmup = 150,
     seed = 1234,
     regions_dat,
-    end_year = 2030
+    end_year = 2035
 ) {
 
-  print("This is the FPET2026 version 1.0, released April 2, 2026.")
+  print("This is the FPET2026 version 1.1, released April 6, 2026.")
   if (subnational) {
     # we need to get geo_units in same order
     survey_df <- survey_df %>%
@@ -156,7 +156,10 @@ fit_fpem  <- function(
                       population_df = population_df,
                       emu_list = emu_list,
                       end_year = end_year,
-                      seed = seed
+                      seed = seed,
+                      chains = chains,
+                      iter_sampling = iter_sampling,
+                      iter_warmup = iter_warmup
                     )
   #return(fit_all)
   print("Chains finished, now calculating estimates (can take a little while)")

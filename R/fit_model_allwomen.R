@@ -34,15 +34,15 @@ fit_model_allwomen <- function(
 
   end_year,
   # settings for sampling
-  chains = 4,
-  iter_sampling = 200,
-  iter_warmup = 150,
+  chains,
+  iter_sampling,
+  iter_warmup,
 
   add_inits = FALSE,
   add_sample = TRUE, # if FALSE, returns fit w/o samples
   # minor to do: check settings when finalizing stan model block/decision re instantiate
   compile_model  = TRUE, force_recompile = FALSE,
-  seed = 1234,
+  seed,
   refresh = 50,
   adapt_delta = 0.9,
   max_treedepth = 14,
