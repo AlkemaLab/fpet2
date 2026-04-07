@@ -33,7 +33,25 @@ fit_fpem  <- function(
     end_year = 2035
 ) {
 
-  print("This is the FPET2026 version 1.1, released April 6, 2026.")
+  print("This is the FPET2026 version 1.11, released April 7, 2026.")
+
+  # checks that data for just one country are used
+  if (length(unique(survey_df$division_numeric_code)) > 1){
+    stop("survey_df should only contain one country.")
+  }
+  if (length(unique(national_dat_df$division_numeric_code)) > 1){
+    stop("For subnational runs, national_dat_df should only contain one country (iso code).")
+  }
+  if (length(unique(population_df$division_numeric_code)) > 1){
+    stop("survey_df should only contain one country.")
+  }
+  if (unique(population_df$division_numeric_code) != unique(survey_df$division_numeric_code)){
+    stop("survey_df and population_df should be for the same country.")
+  }
+  if (unique(national_dat_df$division_numeric_code) != unique(survey_df$division_numeric_code)){
+    stop("survey_df and national_dat_df should be for the same country.")
+  }
+
   if (subnational) {
     # we need to get geo_units in same order
     survey_df <- survey_df %>%
