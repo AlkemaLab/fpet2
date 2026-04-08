@@ -48,8 +48,10 @@ fit_fpem  <- function(
   if (unique(population_df$division_numeric_code) != unique(survey_df$division_numeric_code)){
     stop("survey_df and population_df should be for the same country.")
   }
-  if (unique(national_dat_df$division_numeric_code) != unique(survey_df$division_numeric_code)){
-    stop("survey_df and national_dat_df should be for the same country.")
+  if (!is.null(national_dat_df)){
+    if (unique(national_dat_df$division_numeric_code) != unique(survey_df$division_numeric_code)){
+      stop("survey_df and national_dat_df should be for the same country.")
+    }
   }
 
   if (subnational) {
