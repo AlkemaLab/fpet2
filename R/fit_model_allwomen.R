@@ -74,7 +74,7 @@ fit_model_allwomen <- function(
   }
   result <- list()
   #### stan_data
-  # we use t_min from married (t_max too but that's already fixed to 2024 anyway)
+  # we use t_min from married (t_max too but that's already fixed anyway)
   if (any(data_allwomen[["married"]]$stan_data$t_min >
           data_allwomen[["unmarried"]]$stan_data$t_min)){
     data_allwomen[["married"]]$stan_data$t_min <- rep(min(data_allwomen[["unmarried"]]$stan_data$t_min),
