@@ -14,6 +14,8 @@
 #' @param seed Random seed for Stan
 #' @param regions_dat Data frame with region information
 #' @param end_year End year for the model, default is 2035
+#' @param return_samples Logical, whether to return posterior samples of the FP indicators, default is TRUE
+#' @param return_fitandsamples Logical, whether to all samples in fit object, default is FALSE.
 #'
 #' @returns results list with estimates, samples, data_allwomen, observations,
 #'  and dat_emu = dat_emu
@@ -30,10 +32,12 @@ fit_fpem  <- function(
     iter_warmup = 150,
     seed = 1234,
     regions_dat,
-    end_year = 2035
+    end_year = 2035,
+    return_fitandsamples = FALSE,
+    return_samples = TRUE
 ) {
 
-  print("This is the FPET2026 version 1.11, released April 7, 2026.")
+  print("This is the FPET2026 version 1.12, released April 17, 2026.")
 
   # checks that data for just one country are used
   if (length(unique(survey_df$division_numeric_code)) > 1){
@@ -187,7 +191,7 @@ fit_fpem  <- function(
                             geo_unit_index = data_allwomen[[1]]$geo_unit_index,
                             time_index = data_allwomen[[1]]$time_index,
                             subnational = subnational,
-                            return_samples = TRUE)#FALSE)
+                            return_samples = return_samples)
   if (!nodata_unmarried){
     observation_df <- bind_rows(
       add_uncertainty_in_obs_allwomen(fit_all$samples,
@@ -271,12 +275,15 @@ fit_fpem  <- function(
   results <- c(
     results,
     list(
-      samples = fit_all$samples,
+#      samples = fit_all$samples,
       data_allwomen = data_allwomen,
      observations = observation_df,
     # geo_unit_index = data_allwomen[[1]]$geo_unit_index, # if we need it?
      dat_emu = dat_emu
    ))
+  if (return_fitandsamples){
+    results$samples <- fit_all$samples
+  }
   return(results)
 }
 

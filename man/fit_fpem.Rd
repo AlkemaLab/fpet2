@@ -15,7 +15,9 @@ fit_fpem(
   iter_warmup = 150,
   seed = 1234,
   regions_dat,
-  end_year = 2035
+  end_year = 2035,
+  return_fitandsamples = FALSE,
+  return_samples = TRUE
 )
 }
 \arguments{
@@ -42,6 +44,10 @@ filtered to pop of interest. Model is fitted to surveys in national_dat_df that 
 \item{regions_dat}{Data frame with region information}
 
 \item{end_year}{End year for the model, default is 2035}
+
+\item{return_fitandsamples}{Logical, whether to all samples in fit object, default is FALSE.}
+
+\item{return_samples}{Logical, whether to return posterior samples of the FP indicators, default is TRUE}
 }
 \value{
 results list with estimates, samples, data_allwomen, observations,
