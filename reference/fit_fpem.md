@@ -13,11 +13,13 @@ fit_fpem(
   subnational = FALSE,
   national_dat_df = NULL,
   chains = 4,
-  iter_sampling = 200,
+  iter_sampling = 350,
   iter_warmup = 150,
   seed = 1234,
   regions_dat,
-  end_year = 2030
+  end_year = 2035,
+  return_fitandsamples = FALSE,
+  return_samples = TRUE
 )
 ```
 
@@ -68,7 +70,16 @@ fit_fpem(
 
 - end_year:
 
-  End year for the model, default is 2030
+  End year for the model, default is 2035
+
+- return_fitandsamples:
+
+  Logical, whether to all samples in fit object, default is FALSE.
+
+- return_samples:
+
+  Logical, whether to return posterior samples of the FP indicators,
+  default is TRUE
 
 ## Value
 

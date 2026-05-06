@@ -60,7 +60,7 @@
                         <h4 data-toc-skip class="author">Leontine
 Alkema</h4>
             
-            <h4 data-toc-skip class="date">2026-04-02</h4>
+            <h4 data-toc-skip class="date">2026-05-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/AlkemaLab/fpet2/blob/main/vignettes/articles/localnational.Rmd" class="external-link"><code>vignettes/articles/localnational.Rmd</code></a></small>
       <div class="d-none name"><code>localnational.Rmd</code></div>
@@ -84,11 +84,11 @@ all women. We use local fits.</p>
 estimates:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data_folder</span> <span class="op">&lt;-</span> <span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="st">"data-raw"</span><span class="op">)</span></span>
-<span><span class="va">survey_data_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">data_folder</span>, <span class="st">"Track20 2025 Database for FPET2 051325.csv"</span><span class="op">)</span></span>
-<span><span class="va">nat_population_data_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">data_folder</span>, <span class="st">"population_counts.rds"</span><span class="op">)</span></span>
-<span><span class="co"># read inputs</span></span>
+<span><span class="va">survey_data_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">data_folder</span>, <span class="st">"Track20 2026 Database for FPET2 032726.csv"</span><span class="op">)</span></span>
+<span><span class="va">nat_population_data_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">data_folder</span>, <span class="st">"UNPD 2024 Population through 2050.csv"</span><span class="op">)</span></span>
+<span><span class="co"># read in data files</span></span>
 <span><span class="va">survey_df_all</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="va">survey_data_file</span>, show_col_types <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="va">population_df_all</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="va">nat_population_data_file</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">population_df_all</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="va">nat_population_data_file</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="model-fitting">Model fitting<a class="anchor" aria-label="anchor" href="#model-fitting"></a>
@@ -113,7 +113,7 @@ married women, followed by assumptions for unmarried women.</p>
 <span>  subnational <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  regions_dat <span class="op">=</span> <span class="fu">fpet2</span><span class="fu">::</span><span class="va"><a href="../reference/regions_all.html">regions_all</a></span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] "This is the FPET2026 version 1.0, released April 2, 2026."</span></span>
+<pre><code><span><span class="co">## [1] "This is the FPET2026 version 1.12, released April 17, 2026."</span></span>
 <span><span class="co">## [1] "When imputing SEs for DHS, we use the effective sample size of its preceding survey"</span></span></code></pre>
 <pre><code><span><span class="co">## Joining with `by = join_by(record_id_fixed)`</span></span>
 <span><span class="co">## Joining with `by = join_by(record_id_fixed)`</span></span></code></pre>
@@ -150,50 +150,62 @@ married women, followed by assumptions for unmarried women.</p>
 <span><span class="co">## [1] "We fix all sigmas of hierarchical models."</span></span></code></pre>
 <pre><code><span><span class="co">## Running MCMC with 4 parallel chains...</span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">## Chain 1 Iteration:   1 / 350 [  0%]  (Warmup) </span></span>
-<span><span class="co">## Chain 2 Iteration:   1 / 350 [  0%]  (Warmup) </span></span>
-<span><span class="co">## Chain 3 Iteration:   1 / 350 [  0%]  (Warmup) </span></span>
-<span><span class="co">## Chain 4 Iteration:   1 / 350 [  0%]  (Warmup) </span></span>
-<span><span class="co">## Chain 3 Iteration:  50 / 350 [ 14%]  (Warmup) </span></span>
-<span><span class="co">## Chain 2 Iteration:  50 / 350 [ 14%]  (Warmup) </span></span>
-<span><span class="co">## Chain 1 Iteration:  50 / 350 [ 14%]  (Warmup) </span></span>
-<span><span class="co">## Chain 4 Iteration:  50 / 350 [ 14%]  (Warmup) </span></span>
-<span><span class="co">## Chain 3 Iteration: 100 / 350 [ 28%]  (Warmup) </span></span>
-<span><span class="co">## Chain 2 Iteration: 100 / 350 [ 28%]  (Warmup) </span></span>
-<span><span class="co">## Chain 1 Iteration: 100 / 350 [ 28%]  (Warmup) </span></span>
-<span><span class="co">## Chain 3 Iteration: 150 / 350 [ 42%]  (Warmup) </span></span>
-<span><span class="co">## Chain 3 Iteration: 151 / 350 [ 43%]  (Sampling) </span></span>
-<span><span class="co">## Chain 4 Iteration: 100 / 350 [ 28%]  (Warmup) </span></span>
-<span><span class="co">## Chain 2 Iteration: 150 / 350 [ 42%]  (Warmup) </span></span>
-<span><span class="co">## Chain 2 Iteration: 151 / 350 [ 43%]  (Sampling) </span></span>
-<span><span class="co">## Chain 3 Iteration: 200 / 350 [ 57%]  (Sampling) </span></span>
-<span><span class="co">## Chain 1 Iteration: 150 / 350 [ 42%]  (Warmup) </span></span>
-<span><span class="co">## Chain 1 Iteration: 151 / 350 [ 43%]  (Sampling) </span></span>
-<span><span class="co">## Chain 2 Iteration: 200 / 350 [ 57%]  (Sampling) </span></span>
-<span><span class="co">## Chain 4 Iteration: 150 / 350 [ 42%]  (Warmup) </span></span>
-<span><span class="co">## Chain 3 Iteration: 250 / 350 [ 71%]  (Sampling) </span></span>
-<span><span class="co">## Chain 4 Iteration: 151 / 350 [ 43%]  (Sampling) </span></span>
-<span><span class="co">## Chain 1 Iteration: 200 / 350 [ 57%]  (Sampling) </span></span>
-<span><span class="co">## Chain 2 Iteration: 250 / 350 [ 71%]  (Sampling) </span></span>
-<span><span class="co">## Chain 4 Iteration: 200 / 350 [ 57%]  (Sampling) </span></span>
-<span><span class="co">## Chain 3 Iteration: 300 / 350 [ 85%]  (Sampling) </span></span>
-<span><span class="co">## Chain 1 Iteration: 250 / 350 [ 71%]  (Sampling) </span></span>
-<span><span class="co">## Chain 2 Iteration: 300 / 350 [ 85%]  (Sampling) </span></span>
-<span><span class="co">## Chain 4 Iteration: 250 / 350 [ 71%]  (Sampling) </span></span>
-<span><span class="co">## Chain 3 Iteration: 350 / 350 [100%]  (Sampling) </span></span>
-<span><span class="co">## Chain 3 finished in 8.0 seconds.</span></span>
-<span><span class="co">## Chain 1 Iteration: 300 / 350 [ 85%]  (Sampling) </span></span>
-<span><span class="co">## Chain 4 Iteration: 300 / 350 [ 85%]  (Sampling) </span></span>
-<span><span class="co">## Chain 2 Iteration: 350 / 350 [100%]  (Sampling) </span></span>
-<span><span class="co">## Chain 2 finished in 8.7 seconds.</span></span>
-<span><span class="co">## Chain 1 Iteration: 350 / 350 [100%]  (Sampling) </span></span>
-<span><span class="co">## Chain 1 finished in 9.0 seconds.</span></span>
-<span><span class="co">## Chain 4 Iteration: 350 / 350 [100%]  (Sampling) </span></span>
-<span><span class="co">## Chain 4 finished in 9.1 seconds.</span></span>
+<span><span class="co">## Chain 1 Iteration:   1 / 500 [  0%]  (Warmup) </span></span>
+<span><span class="co">## Chain 2 Iteration:   1 / 500 [  0%]  (Warmup) </span></span>
+<span><span class="co">## Chain 3 Iteration:   1 / 500 [  0%]  (Warmup) </span></span>
+<span><span class="co">## Chain 4 Iteration:   1 / 500 [  0%]  (Warmup) </span></span>
+<span><span class="co">## Chain 4 Iteration:  50 / 500 [ 10%]  (Warmup) </span></span>
+<span><span class="co">## Chain 3 Iteration:  50 / 500 [ 10%]  (Warmup) </span></span>
+<span><span class="co">## Chain 1 Iteration:  50 / 500 [ 10%]  (Warmup) </span></span>
+<span><span class="co">## Chain 2 Iteration:  50 / 500 [ 10%]  (Warmup) </span></span>
+<span><span class="co">## Chain 3 Iteration: 100 / 500 [ 20%]  (Warmup) </span></span>
+<span><span class="co">## Chain 4 Iteration: 100 / 500 [ 20%]  (Warmup) </span></span>
+<span><span class="co">## Chain 1 Iteration: 100 / 500 [ 20%]  (Warmup) </span></span>
+<span><span class="co">## Chain 2 Iteration: 100 / 500 [ 20%]  (Warmup) </span></span>
+<span><span class="co">## Chain 3 Iteration: 150 / 500 [ 30%]  (Warmup) </span></span>
+<span><span class="co">## Chain 3 Iteration: 151 / 500 [ 30%]  (Sampling) </span></span>
+<span><span class="co">## Chain 4 Iteration: 150 / 500 [ 30%]  (Warmup) </span></span>
+<span><span class="co">## Chain 4 Iteration: 151 / 500 [ 30%]  (Sampling) </span></span>
+<span><span class="co">## Chain 1 Iteration: 150 / 500 [ 30%]  (Warmup) </span></span>
+<span><span class="co">## Chain 1 Iteration: 151 / 500 [ 30%]  (Sampling) </span></span>
+<span><span class="co">## Chain 2 Iteration: 150 / 500 [ 30%]  (Warmup) </span></span>
+<span><span class="co">## Chain 2 Iteration: 151 / 500 [ 30%]  (Sampling) </span></span>
+<span><span class="co">## Chain 3 Iteration: 200 / 500 [ 40%]  (Sampling) </span></span>
+<span><span class="co">## Chain 4 Iteration: 200 / 500 [ 40%]  (Sampling) </span></span>
+<span><span class="co">## Chain 1 Iteration: 200 / 500 [ 40%]  (Sampling) </span></span>
+<span><span class="co">## Chain 2 Iteration: 200 / 500 [ 40%]  (Sampling) </span></span>
+<span><span class="co">## Chain 3 Iteration: 250 / 500 [ 50%]  (Sampling) </span></span>
+<span><span class="co">## Chain 4 Iteration: 250 / 500 [ 50%]  (Sampling) </span></span>
+<span><span class="co">## Chain 1 Iteration: 250 / 500 [ 50%]  (Sampling) </span></span>
+<span><span class="co">## Chain 2 Iteration: 250 / 500 [ 50%]  (Sampling) </span></span>
+<span><span class="co">## Chain 3 Iteration: 300 / 500 [ 60%]  (Sampling) </span></span>
+<span><span class="co">## Chain 4 Iteration: 300 / 500 [ 60%]  (Sampling) </span></span>
+<span><span class="co">## Chain 1 Iteration: 300 / 500 [ 60%]  (Sampling) </span></span>
+<span><span class="co">## Chain 2 Iteration: 300 / 500 [ 60%]  (Sampling) </span></span>
+<span><span class="co">## Chain 3 Iteration: 350 / 500 [ 70%]  (Sampling) </span></span>
+<span><span class="co">## Chain 4 Iteration: 350 / 500 [ 70%]  (Sampling) </span></span>
+<span><span class="co">## Chain 1 Iteration: 350 / 500 [ 70%]  (Sampling) </span></span>
+<span><span class="co">## Chain 2 Iteration: 350 / 500 [ 70%]  (Sampling) </span></span>
+<span><span class="co">## Chain 3 Iteration: 400 / 500 [ 80%]  (Sampling) </span></span>
+<span><span class="co">## Chain 4 Iteration: 400 / 500 [ 80%]  (Sampling) </span></span>
+<span><span class="co">## Chain 1 Iteration: 400 / 500 [ 80%]  (Sampling) </span></span>
+<span><span class="co">## Chain 2 Iteration: 400 / 500 [ 80%]  (Sampling) </span></span>
+<span><span class="co">## Chain 3 Iteration: 450 / 500 [ 90%]  (Sampling) </span></span>
+<span><span class="co">## Chain 4 Iteration: 450 / 500 [ 90%]  (Sampling) </span></span>
+<span><span class="co">## Chain 1 Iteration: 450 / 500 [ 90%]  (Sampling) </span></span>
+<span><span class="co">## Chain 2 Iteration: 450 / 500 [ 90%]  (Sampling) </span></span>
+<span><span class="co">## Chain 3 Iteration: 500 / 500 [100%]  (Sampling) </span></span>
+<span><span class="co">## Chain 3 finished in 10.7 seconds.</span></span>
+<span><span class="co">## Chain 1 Iteration: 500 / 500 [100%]  (Sampling) </span></span>
+<span><span class="co">## Chain 1 finished in 11.1 seconds.</span></span>
+<span><span class="co">## Chain 4 Iteration: 500 / 500 [100%]  (Sampling) </span></span>
+<span><span class="co">## Chain 4 finished in 11.2 seconds.</span></span>
+<span><span class="co">## Chain 2 Iteration: 500 / 500 [100%]  (Sampling) </span></span>
+<span><span class="co">## Chain 2 finished in 11.3 seconds.</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## All 4 chains finished successfully.</span></span>
-<span><span class="co">## Mean chain execution time: 8.7 seconds.</span></span>
-<span><span class="co">## Total execution time: 9.2 seconds.</span></span>
+<span><span class="co">## Mean chain execution time: 11.1 seconds.</span></span>
+<span><span class="co">## Total execution time: 11.4 seconds.</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## [1] "Chains finished, now calculating estimates (can take a little while)"</span></span></code></pre>
 <pre><code><span><span class="co">## Joining with `by = join_by(year, marital_status)`</span></span></code></pre>
@@ -219,7 +231,7 @@ for custom plotting or tables. Some examples:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">results_national</span><span class="op">$</span><span class="va">estimates</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">marital_status</span> <span class="op">==</span> <span class="st">"all"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 11,712 × 9</span></span></span>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 12,672 × 10</span></span></span>
 <span><span class="co">##    iso    year indicator         marital_status percentile division_numeric_code</span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 1</span> TGO    <span style="text-decoration: underline;">1</span>970 contraceptive_us… all            mean                         768</span></span>
@@ -232,12 +244,13 @@ for custom plotting or tables. Some examples:</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> TGO    <span style="text-decoration: underline;">1</span>970 contraceptive_us… all            10%                          768</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> TGO    <span style="text-decoration: underline;">1</span>970 contraceptive_us… all            50%                          768</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> TGO    <span style="text-decoration: underline;">1</span>970 contraceptive_us… all            50%                          768</span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ 11,702 more rows</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ 3 more variables: region_code &lt;lgl&gt;, measure &lt;chr&gt;, value &lt;dbl&gt;</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 12,662 more rows</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 4 more variables: age_range &lt;chr&gt;, region_code &lt;lgl&gt;, measure &lt;chr&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   value &lt;dbl&gt;</span></span></span></code></pre>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">results_national</span><span class="op">$</span><span class="va">estimates</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">measure</span> <span class="op">==</span> <span class="st">"population_count"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 17,568 × 9</span></span></span>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 19,008 × 10</span></span></span>
 <span><span class="co">##    iso    year indicator         marital_status percentile division_numeric_code</span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 1</span> TGO    <span style="text-decoration: underline;">1</span>970 contraceptive_us… married        mean                         768</span></span>
@@ -250,8 +263,9 @@ for custom plotting or tables. Some examples:</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> TGO    <span style="text-decoration: underline;">1</span>970 contraceptive_us… married        97.5%                        768</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> TGO    <span style="text-decoration: underline;">1</span>970 contraceptive_us… married        mean                         768</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> TGO    <span style="text-decoration: underline;">1</span>970 contraceptive_us… married        2.5%                         768</span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ 17,558 more rows</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ 3 more variables: region_code &lt;lgl&gt;, measure &lt;chr&gt;, value &lt;dbl&gt;</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 18,998 more rows</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 4 more variables: age_range &lt;chr&gt;, region_code &lt;lgl&gt;, measure &lt;chr&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   value &lt;dbl&gt;</span></span></span></code></pre>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

@@ -87,6 +87,7 @@ See articles on package website, at
 Please cite as follows:
 
 ``` r
+
 citation("fpet2")
 #> To cite package 'fpet2' in publications use:
 #> 

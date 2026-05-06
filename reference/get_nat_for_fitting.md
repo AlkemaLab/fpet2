@@ -12,12 +12,14 @@ get_nat_for_fitting(national_dat_df, survey_df_use)
 
 - national_dat_df:
 
-  National survey data
+  National survey data, for specific marital group and div code
 
 - survey_df_use:
 
-  Subnational survey data used in fitting
+  Subnational survey data used in fitting, for specific marital group
+  and div code
 
 ## Value
 
-Dataframe with national data not in subnational survey data
+Dataframe with national data if not present for all regions in
+subnational survey data

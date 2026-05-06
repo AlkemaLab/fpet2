@@ -50,11 +50,13 @@
 <span>  subnational <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  national_dat_df <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  chains <span class="op">=</span> <span class="fl">4</span>,</span>
-<span>  iter_sampling <span class="op">=</span> <span class="fl">200</span>,</span>
+<span>  iter_sampling <span class="op">=</span> <span class="fl">350</span>,</span>
 <span>  iter_warmup <span class="op">=</span> <span class="fl">150</span>,</span>
 <span>  seed <span class="op">=</span> <span class="fl">1234</span>,</span>
 <span>  <span class="va">regions_dat</span>,</span>
-<span>  end_year <span class="op">=</span> <span class="fl">2030</span></span>
+<span>  end_year <span class="op">=</span> <span class="fl">2035</span>,</span>
+<span>  return_fitandsamples <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  return_samples <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -105,7 +107,15 @@ filtered to pop of interest. Model is fitted to surveys in national_dat_df that 
 
 
 <dt id="arg-end-year">end_year<a class="anchor" aria-label="anchor" href="#arg-end-year"></a></dt>
-<dd><p>End year for the model, default is 2030</p></dd>
+<dd><p>End year for the model, default is 2035</p></dd>
+
+
+<dt id="arg-return-fitandsamples">return_fitandsamples<a class="anchor" aria-label="anchor" href="#arg-return-fitandsamples"></a></dt>
+<dd><p>Logical, whether to all samples in fit object, default is FALSE.</p></dd>
+
+
+<dt id="arg-return-samples">return_samples<a class="anchor" aria-label="anchor" href="#arg-return-samples"></a></dt>
+<dd><p>Logical, whether to return posterior samples of the FP indicators, default is TRUE</p></dd>
 
 </dl></div>
     <div class="section level2">

@@ -6,6 +6,7 @@ In this vignette we illustrate how to do global fitting for national
 estimation of family planning indicators using the FPET2 R package.
 
 ``` r
+
 library(fpet2)
 options(cmdstanr_warn_inits = FALSE)
 ```
@@ -18,10 +19,16 @@ use meta information on countries and world regions.
 Read data
 
 ``` r
+
 data_folder <- here::here("data-raw")
-survey_data_file <- file.path(data_folder, "Track20 2025 Database for FPET2 051325.csv")
+survey_data_file <- file.path(data_folder, "Track20 2026 Database for FPET2 032726.csv")
 survey_df_all <- readr::read_csv(survey_data_file, show_col_types = FALSE)
 ```
+
+    ## Warning: One or more parsing issues, call `problems()` on your data frame for details,
+    ## e.g.:
+    ##   dat <- vroom(...)
+    ##   problems(dat)
 
 Global national model fitting is done separately per marital group. We
 illustrate it here for married women.
@@ -29,6 +36,7 @@ illustrate it here for married women.
 We process the data for that marital group:
 
 ``` r
+
 is_married <- TRUE
 dat <- process_data(survey_df_all,
                     regions_dat = fpet2::regions_all,
@@ -49,6 +57,7 @@ or a longer run. We use a test setting here for illustration only. NOTE
 THAT THIS WILL PRODUCE WARNINGS AND RESULTS THAT ARE NOT TO BE USED!!
 
 ``` r
+
 # test settings
 chains = 4
 iter_sampling = 5
@@ -68,6 +77,7 @@ directory, in a directory called `bayestransition_output`. Alternatively
 to use:
 
 ``` r
+
 # Create an output directory in a temporary location
 output_dir <- file.path(tempdir(), "vignette_output")
 dir.create(output_dir, showWarnings = FALSE)
@@ -76,7 +86,7 @@ dir.create(output_dir, showWarnings = FALSE)
 cat("Outputs are saved in:", output_dir, "\n")
 ```
 
-    ## Outputs are saved in: /tmp/RtmpkHjN7X/vignette_output
+    ## Outputs are saved in: /tmp/RtmpkQWH4j/vignette_output
 
 ## Model fitting
 
@@ -98,6 +108,7 @@ fits:
 Let’s start with 1a:
 
 ``` r
+
 fit1a <- fit_model(runstep = "step1a",
                    survey_df = dat,
                    is_married = is_married,
@@ -113,7 +124,7 @@ fit1a <- fit_model(runstep = "step1a",
     ## [1] "For 1a, we take all levels from the fit_model inputs"
     ## [1] "We do not fix any terms or sigmas of hierarchical models."
     ## [1] "We do give nonSE to DHS (by temporarily renaming DHS into DHS0)"
-    ## [1] "output directory is /tmp/RtmpkHjN7X/vignette_output"
+    ## [1] "output directory is /tmp/RtmpkQWH4j/vignette_output"
     ## Running MCMC with 4 parallel chains...
     ## 
     ## Chain 1 WARNING: No variance estimation is 
@@ -125,25 +136,25 @@ fit1a <- fit_model(runstep = "step1a",
     ## Chain 4 WARNING: No variance estimation is 
     ## Chain 4          performed for num_warmup < 20 
     ## Chain 1 Iteration: 1 / 10 [ 10%]  (Warmup) 
+    ## Chain 2 Iteration: 1 / 10 [ 10%]  (Warmup) 
     ## Chain 3 Iteration: 1 / 10 [ 10%]  (Warmup) 
     ## Chain 4 Iteration: 1 / 10 [ 10%]  (Warmup) 
-    ## Chain 2 Iteration: 1 / 10 [ 10%]  (Warmup) 
     ## Chain 2 Iteration: 6 / 10 [ 60%]  (Sampling) 
-    ## Chain 1 Iteration: 6 / 10 [ 60%]  (Sampling) 
     ## Chain 2 Iteration: 10 / 10 [100%]  (Sampling) 
-    ## Chain 2 finished in 0.5 seconds.
+    ## Chain 1 Iteration: 6 / 10 [ 60%]  (Sampling) 
+    ## Chain 2 finished in 0.6 seconds.
     ## Chain 1 Iteration: 10 / 10 [100%]  (Sampling) 
-    ## Chain 1 finished in 0.8 seconds.
+    ## Chain 4 Iteration: 6 / 10 [ 60%]  (Sampling) 
+    ## Chain 1 finished in 0.9 seconds.
+    ## Chain 4 Iteration: 10 / 10 [100%]  (Sampling) 
+    ## Chain 4 finished in 0.9 seconds.
     ## Chain 3 Iteration: 6 / 10 [ 60%]  (Sampling) 
     ## Chain 3 Iteration: 10 / 10 [100%]  (Sampling) 
-    ## Chain 3 finished in 3.4 seconds.
-    ## Chain 4 Iteration: 6 / 10 [ 60%]  (Sampling) 
-    ## Chain 4 Iteration: 10 / 10 [100%]  (Sampling) 
-    ## Chain 4 finished in 14.1 seconds.
+    ## Chain 3 finished in 2.2 seconds.
     ## 
     ## All 4 chains finished successfully.
-    ## Mean chain execution time: 4.7 seconds.
-    ## Total execution time: 14.7 seconds.
+    ## Mean chain execution time: 1.2 seconds.
+    ## Total execution time: 2.8 seconds.
 
     ## Warning: 20 of 20 (100.0%) transitions ended with a divergence.
     ## See https://mc-stan.org/misc/warnings for details.
@@ -151,10 +162,11 @@ fit1a <- fit_model(runstep = "step1a",
 Outputs are stored in
 
 ``` r
+
 fit1a$output_dir
 ```
 
-    ## [1] "/tmp/RtmpkHjN7X/vignette_output"
+    ## [1] "/tmp/RtmpkQWH4j/vignette_output"
 
 The next fit 1b needs summary information from 1a passed on through its
 `global_fit` object. Here we pass the one we just fitted. For fit1b, we
@@ -163,6 +175,7 @@ allow for data points that are outlying in fit 1a to be possibly
 outlying, as follows:
 
 ``` r
+
 dat_updated <- update_nooutlier_in_global_fit(fit1a, is_married)
 ```
 
@@ -175,6 +188,7 @@ dat_updated <- update_nooutlier_in_global_fit(fit1a, is_married)
 Now let’s fit step 1b:
 
 ``` r
+
 fit1b <- fit_model(runstep = "step1b",
                    global_fit = fit1a,
                    survey_df = dat_updated,
@@ -196,7 +210,7 @@ fit1b <- fit_model(runstep = "step1b",
     ## [1] "We take all hier terms from the global fit, using prefix"
     ## [1] "For hierarchical terms, we fix things up to the 2nd-lowest level."
     ## [1] "For sigma terms in hierarchical models for demand and ds, we fix things up to the 2nd-lowest level."
-    ## [1] "output directory is /tmp/RtmpkHjN7X/vignette_output"
+    ## [1] "output directory is /tmp/RtmpkQWH4j/vignette_output"
     ## Running MCMC with 4 parallel chains...
     ## 
     ## Chain 1 WARNING: No variance estimation is 
@@ -211,22 +225,22 @@ fit1b <- fit_model(runstep = "step1b",
     ## Chain 2 Iteration: 1 / 10 [ 10%]  (Warmup) 
     ## Chain 3 Iteration: 1 / 10 [ 10%]  (Warmup) 
     ## Chain 4 Iteration: 1 / 10 [ 10%]  (Warmup) 
-    ## Chain 2 Iteration: 6 / 10 [ 60%]  (Sampling) 
-    ## Chain 2 Iteration: 10 / 10 [100%]  (Sampling) 
-    ## Chain 2 finished in 2.0 seconds.
-    ## Chain 3 Iteration: 6 / 10 [ 60%]  (Sampling) 
-    ## Chain 3 Iteration: 10 / 10 [100%]  (Sampling) 
-    ## Chain 3 finished in 2.9 seconds.
     ## Chain 1 Iteration: 6 / 10 [ 60%]  (Sampling) 
+    ## Chain 3 Iteration: 6 / 10 [ 60%]  (Sampling) 
     ## Chain 4 Iteration: 6 / 10 [ 60%]  (Sampling) 
+    ## Chain 2 Iteration: 6 / 10 [ 60%]  (Sampling) 
     ## Chain 1 Iteration: 10 / 10 [100%]  (Sampling) 
+    ## Chain 3 Iteration: 10 / 10 [100%]  (Sampling) 
     ## Chain 4 Iteration: 10 / 10 [100%]  (Sampling) 
-    ## Chain 1 finished in 4.3 seconds.
-    ## Chain 4 finished in 4.2 seconds.
+    ## Chain 2 Iteration: 10 / 10 [100%]  (Sampling) 
+    ## Chain 1 finished in 1.4 seconds.
+    ## Chain 3 finished in 1.4 seconds.
+    ## Chain 4 finished in 1.4 seconds.
+    ## Chain 2 finished in 1.5 seconds.
     ## 
     ## All 4 chains finished successfully.
-    ## Mean chain execution time: 3.4 seconds.
-    ## Total execution time: 4.8 seconds.
+    ## Mean chain execution time: 1.4 seconds.
+    ## Total execution time: 2.1 seconds.
 
     ## Warning: 20 of 20 (100.0%) transitions ended with a divergence.
     ## See https://mc-stan.org/misc/warnings for details.
@@ -234,6 +248,7 @@ fit1b <- fit_model(runstep = "step1b",
 In step 2, the parameters for traditional use are estimated:
 
 ``` r
+
 fit2 <- fit_model(runstep = "step2",
                    global_fit = fit1b,
                    survey_df = dat_updated,
@@ -256,7 +271,7 @@ fit2 <- fit_model(runstep = "step2",
     ## [1] "We fix all sigmas of hierarchical models for demand and ds."
     ## [1] "For 2, we take all levels for trad from the fit_model inputs"
     ## [1] "We do not fix any terms or sigmas of hierarchical models."
-    ## [1] "output directory is /tmp/RtmpkHjN7X/vignette_output"
+    ## [1] "output directory is /tmp/RtmpkQWH4j/vignette_output"
     ## Running MCMC with 4 parallel chains...
     ## 
     ## Chain 1 WARNING: No variance estimation is 
@@ -272,21 +287,21 @@ fit2 <- fit_model(runstep = "step2",
     ## Chain 3 Iteration: 1 / 10 [ 10%]  (Warmup) 
     ## Chain 4 Iteration: 1 / 10 [ 10%]  (Warmup) 
     ## Chain 1 Iteration: 6 / 10 [ 60%]  (Sampling) 
-    ## Chain 1 Iteration: 10 / 10 [100%]  (Sampling) 
-    ## Chain 1 finished in 1.4 seconds.
     ## Chain 4 Iteration: 6 / 10 [ 60%]  (Sampling) 
+    ## Chain 1 Iteration: 10 / 10 [100%]  (Sampling) 
     ## Chain 4 Iteration: 10 / 10 [100%]  (Sampling) 
-    ## Chain 4 finished in 2.4 seconds.
+    ## Chain 1 finished in 1.1 seconds.
+    ## Chain 4 finished in 1.1 seconds.
     ## Chain 2 Iteration: 6 / 10 [ 60%]  (Sampling) 
-    ## Chain 2 Iteration: 10 / 10 [100%]  (Sampling) 
-    ## Chain 2 finished in 5.1 seconds.
     ## Chain 3 Iteration: 6 / 10 [ 60%]  (Sampling) 
+    ## Chain 2 Iteration: 10 / 10 [100%]  (Sampling) 
+    ## Chain 2 finished in 5.7 seconds.
     ## Chain 3 Iteration: 10 / 10 [100%]  (Sampling) 
-    ## Chain 3 finished in 6.1 seconds.
+    ## Chain 3 finished in 6.0 seconds.
     ## 
     ## All 4 chains finished successfully.
-    ## Mean chain execution time: 3.8 seconds.
-    ## Total execution time: 7.0 seconds.
+    ## Mean chain execution time: 3.5 seconds.
+    ## Total execution time: 6.8 seconds.
 
     ## Warning: 20 of 20 (100.0%) transitions ended with a divergence.
     ## See https://mc-stan.org/misc/warnings for details.
@@ -299,6 +314,7 @@ incorrect.
 Let’s create the results first:
 
 ``` r
+
 results2 <- list()
 results2$estimates <- get_estimates_globalruns(
   samples = fit2$samples, 
@@ -312,12 +328,14 @@ Add uncertainty in observations (so that we can display the 95% CIs
 associated with each data point):
 
 ``` r
+
 results2$observations <- add_uncertainty_in_obs(fit  = fit2)
 ```
 
 Now let’s plot! (again, not showing the results…)
 
 ``` r
+
 plots <-
   plot_estimates_local_all(
       results = results2,
