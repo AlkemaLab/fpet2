@@ -5,8 +5,9 @@ date: "`r Sys.Date()`"
 ---
 
 # Introduction
-In this vignette we obtain national estimates of FP indicators for all women. We use local fits. 
 
+In this vignette we obtain national estimates of FP indicators for all
+women. We use local fits.
 
 ```{r}
 #| label: setup
@@ -14,29 +15,34 @@ library(fpet2)
 options(cmdstanr_warn_inits = FALSE)
 ```
 
-
 # Read data for all countries
 
 We use the Track20 survey data base and the UNPD population estimates:
-```{r}
+
+```{r, warning = FALSE, message = FALSE}
 data_folder <- here::here("data-raw")
-survey_data_file <- file.path(data_folder, "Track20 2025 Database for FPET2 051325.csv")
-nat_population_data_file <- file.path(data_folder, "population_counts.rds")
-# read inputs
+survey_data_file <- file.path(data_folder, "Track20 2026 Database for FPET2 032726.csv")
+nat_population_data_file <- file.path(data_folder, "UNPD 2024 Population through 2050.csv")
+# read in data files
 survey_df_all <- readr::read_csv(survey_data_file, show_col_types = FALSE)
-population_df_all <- readRDS(nat_population_data_file)
+population_df_all <- readr::read_csv(here::here(nat_population_data_file))
 ```
 
 # Model fitting
 
-First choose a country (division_numeric_code and country names are available in `fpet2::regions_all`): 
+First choose a country (division_numeric_code and country names are
+available in `fpet2::regions_all`):
+
 ```{r}
 division_numeric_code_select <- 768 # Togo
 ```
 
-Note that in the current package, the model needs to be compiled once, this takes a little while. (Note: In the 2024 version, we packaged up the model using `instantiate`, we can consider that again here too). 
+Note that in the current package, the model needs to be compiled once,
+this takes a little while. (Note: In the 2024 version, we packaged up
+the model using `instantiate`, we can consider that again here too).
 
-There will be text indicating what model assumptions are made for married women, followed by assumptions for unmarried women.
+There will be text indicating what model assumptions are made for
+married women, followed by assumptions for unmarried women.
 
 ```{r, warning = FALSE}
 results_national <- fit_fpem(
@@ -51,6 +57,7 @@ results_national <- fit_fpem(
 ```
 
 Let's plot!
+
 ```{r}
 plots_all <- plot_estimates_local_all(
   results = results_national,
@@ -60,17 +67,15 @@ plots_all <- plot_estimates_local_all(
 print(plots_all)
 ```
 
-The model fit object also contains the estimates, which can be used for custom plotting or tables. Some examples:
+The model fit object also contains the estimates, which can be used for
+custom plotting or tables. Some examples:
 
 ```{r}
 results_national$estimates |>
   dplyr::filter(marital_status == "all")
 ```
 
-
 ```{r}
 results_national$estimates |>
   dplyr::filter(measure == "population_count")
 ```
-
-
